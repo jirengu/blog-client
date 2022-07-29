@@ -8,6 +8,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import request from './helpers/request'
 
 export default {
   name: 'App',
