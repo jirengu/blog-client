@@ -1,19 +1,29 @@
 <template>
   <div id="app">
-    <el-button>默认按钮</el-button>
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <el-button @click="login">登录</el-button>
+    <div>用户名: {{username}}</div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 import request from './helpers/request'
+import auth from '@/api/auth'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      username: ''
+    }
+  },
+  methods: {
+    login() {
+      auth.login({ username: 'hunger', password: '123456' })
+        .then(res => {
+          console.log(res)
+          this.username = res.data.username
+        })
+    }
   }
 }
 </script>
